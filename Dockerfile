@@ -1,5 +1,7 @@
+# maybe use other tags here
 FROM "python:3.8-alpine"
 
+# warning: dependencies should be improved
 RUN set -eux \
     && apk update && apk add --no-cache \
       python3-dev py3-pip gcc git curl build-base \
