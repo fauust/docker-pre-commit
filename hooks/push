@@ -8,5 +8,5 @@ set -o pipefail
 set -o posix
 
 if [[ $SOURCE_BRANCH == "master" ]]; then
-  docker push "fauust/docker-systemd:latest"
+  docker push "fauust/docker-pre-commit:latest"
 fi
