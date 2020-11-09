@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# See:
+# https://docs.docker.com/docker-hub/builds/advanced/
+
+set -o nounset
+set -o pipefail
+set -o posix
+
+if [[ $SOURCE_BRANCH == "master" ]]; then
+  docker push "fauust/docker-systemd:latest"
+fi

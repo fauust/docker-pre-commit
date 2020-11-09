@@ -1,0 +1,26 @@
+---
+name: build
+
+on:
+  push:
+    paths:
+      - .github/workflows/build.yml
+      - .dive-ci
+      - Dockerfile
+  pull_request:
+    paths:
+      - .github/workflows/build.yml
+      - .dive-ci
+      - Dockerfile
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: |
+          docker build . -t fauust/docker-pre-commit
+      - name: Dive check ${{ matrix.base_img }}
+        run: |
+          docker run --rm -i -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/mnt -w /mnt wagoodman/dive:latest --ci fauust/docker-pre-commit

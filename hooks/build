@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# See:
+# https://docs.docker.com/docker-hub/builds/advanced/
+
+set -o nounset
+set -o pipefail
+set -o posix
+
+docker build . --no-cache -t "fauust/docker-pre-commit:latest"
